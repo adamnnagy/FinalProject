@@ -1,12 +1,11 @@
+amplitude = new p5.Amplitude();
+
 function preload() {
   guitar1 = loadSound('sounds/sample_1.wav');
   guitar2 = loadSound('sounds/sample_2.wav');
   nature1 = loadSound('sounds/Birds Songs And Calls.wav');
   nature2 = loadSound('sounds/Thunder Light Rain.wav');
 }
-
-
-
 
 
 function setup(){
