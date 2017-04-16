@@ -5,6 +5,7 @@ var start;
 var interval = 20;
 
 
+
 function setup(){
   colorMode(RGB);
   // createCanvas(600*0.71, 600);
@@ -25,14 +26,13 @@ function setup(){
     rectangles[i] = new Rectangle(defaultHeight*i);
   }
 
-  start = millis();
+  console.log('version 1.0');
+
+
 
 }
 
 function draw() {
-
-
-
 
 
   background(250);
@@ -41,20 +41,28 @@ function draw() {
 
   var level = amplitude.getLevel();
 
-// if (millis() > start + interval) {
-  // console.log('loopd');
-  if (level > 0.1) {
+
+  if (false) {
     colorTo1 = color(232, 215, 92);
 
   } else {
-    colorTo1 = color(25, 82, 99);
-    // start = millis();
+    colorYellowish = color(232, 215, 92);
+    collorBlueish = color(25, 82, 99);
+    gradient = map(level, 0, 0.15, 0, 1);
+    colorTo1 = lerpColor(collorBlueish, colorYellowish, gradient);
+
   }
-// }
+
 
   for (var i = rectangles.length - 1; i > 0; i--) {
 
-      setInterval(drawRect(i), 2000);
+    strokeWeight(0.05);
+
+    gradient = map(i, rectangles.length - 1, 1, 1, 0);
+    stroke(lerpColor(colorFrom2, colorTo2, gradient));
+    fill(lerpColor(colorFrom1, colorTo1, gradient));
+    rectangles[i].update();
+    rectangles[i].display();
 
 
   }
@@ -69,14 +77,13 @@ function draw() {
 
   }
 
-}
 
-function drawRect(i) {
-  strokeWeight(0.05);
+  for (var i = 0; i < sounds.length; i++) {
+    rectMode(CORNER);
+    //rect(-width/2) //The rectangles should be on the screen!!! -- for playback
+    if (sounds[i].isPlaying()) {
+      sounds[i].duration();
+    }
+  }
 
-  gradient = map(i, rectangles.length - 1, 1, 1, 0);
-  stroke(lerpColor(colorFrom2, colorTo2, gradient));
-  fill(lerpColor(colorFrom1, colorTo1, gradient));
-  rectangles[i].update();
-  rectangles[i].display();
 }

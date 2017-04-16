@@ -4,7 +4,7 @@ function Rectangle(a) {
 }
 
 Rectangle.prototype.display = function () {
-
+  rectMode(CENTER);
   rect(0, 0, this.width, this.height);
 
 };
