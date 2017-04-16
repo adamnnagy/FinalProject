@@ -1,6 +1,7 @@
 amplitude = new p5.Amplitude();
 natureSounds = [];
 guitarSounds = [];
+soundVisuals = [];
 
 function preload() {
   //guitars
@@ -20,13 +21,18 @@ function preload() {
 
 function setup(){
 
-  playMode('restart');
+  for (var i = 0; i < soundVisuals.length; i++) {
+    soundVisuals[i]
+  }
+  // playMode('restart');
 
 }
 
 function draw() {
 
-
+if (guitar1.isPlaying) {
+  console.log('play');
+}
 
 
 }
@@ -34,17 +40,18 @@ function draw() {
 function keyPressed() {
 
   if (keyCode === 65) { //checking for "a"
+    if (!guitar1.isPlaying()) {
+    guitar1.setVolume(0.1);
+    guitar1.reverseBuffer();
+    guitar1.play();
 
-  guitar1.setVolume(0.1);
-  guitar1.reverseBuffer();
-  guitar1.play();
-
+  }
 
 } else if (keyCode === 83) { //"s"
-
-  guitar2.setVolume(0.1);
-  guitar2.play();
-
+  if (!guitar1.isPlaying()) {
+    guitar2.setVolume(0.1);
+    guitar2.play();
+  }
 
   } else if (keyCode === 68) { //'d'
 
@@ -68,12 +75,12 @@ function keyPressed() {
 
 } else if (keyCode === 76) { //'l'
 
-  nature3.setVolume(0.1);
+  nature3.setVolume(0.01);
   nature3.play();
 
 } else if (keyCode === 186) { //';'
 
-  nature4.setVolume(0.1);
+  nature4.setVolume(0.05);
   nature4.play();
 
 }
