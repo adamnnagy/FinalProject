@@ -3,10 +3,11 @@ var defaultHeight = 75;
 var numberOfRectangles = 30;
 var start;
 var interval = 20;
-
+var firstRun = true;
 
 
 function setup(){
+
   colorMode(RGB);
   // createCanvas(600*0.71, 600);
   createCanvas(windowWidth, windowHeight);
@@ -28,16 +29,19 @@ function setup(){
 
   console.log('version 1.0');
 
-
-
 }
 
 function draw() {
 
 
+
+
   background(250);
 
+  push();
   translate(width/2, height/2);
+
+
 
   var level = amplitude.getLevel();
 
@@ -64,7 +68,6 @@ function draw() {
     rectangles[i].update();
     rectangles[i].display();
 
-
   }
 
   for (var i = 0; i < 8; i++) {
@@ -77,13 +80,60 @@ function draw() {
 
   }
 
+  pop();
 
-  for (var i = 0; i < sounds.length; i++) {
-    rectMode(CORNER);
-    //rect(-width/2) //The rectangles should be on the screen!!! -- for playback
-    if (sounds[i].isPlaying()) {
-      sounds[i].duration();
-    }
+//SOUND rectangles
+
+rectMode(CORNER);
+var columnWidth = 30;
+var columnHeight = 80;
+var gap = 50;
+
+
+var offset = (columnWidth+gap)*sounds.length/2*(-1);
+
+translate(windowWidth/2, windowHeight - 180);
+
+
+for (var i = 0; i < sounds.length; i++) {
+
+    stroke(100);
+    fill(200);
+
+    rect(offset+(columnWidth+gap)*i, 0, columnWidth, columnHeight);
+
+    text(desription[i], offset+(columnWidth+gap)*i, 0);
+}
+
+
+    for (var i = 0; i < sounds.length; i++) {
+
+      if (sounds[i].isPlaying()) {
+
+        noStroke();
+        fill(0);
+
+
+        sampleTime = map(sounds[i].currentTime(), 0, sounds[i].duration(), 0, columnHeight);
+
+        rect(offset+i*(columnWidth+gap), 0, columnWidth, sampleTime);
+
+      }
+
   }
+      // pop();                                    // POP()! THE STYLE
+
+
+    //   if (firstRun){
+    //     push();
+    //     fill(255);
+    //     translate(width/2, height/2);
+    //     textAlign(CENTER);
+    //     textSize(120);
+    //     text('Use the buttons "ASDF" and "JKL;" to play music!', 0, 0);
+    //     pop();
+    //     // firstRun = false;
+    // console.log('asdf');
+    //   }
 
 }
