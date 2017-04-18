@@ -4,7 +4,7 @@ var numberOfRectangles = 30;
 var start;
 var interval = 20;
 var firstRun = true;
-
+var fft, filterr;
 
 function setup(){
 
@@ -27,14 +27,15 @@ function setup(){
     rectangles[i] = new Rectangle(defaultHeight*i);
   }
 
-  console.log('version 1.0');
+  console.log('version 1.1');
+  textFont("Helvetica");
+
+  filterr = new p5.BandPass();
+  fft = new p5.FFT();
 
 }
 
 function draw() {
-
-
-
 
   background(250);
 
@@ -51,9 +52,9 @@ function draw() {
 
   } else {
     colorYellowish = color(232, 215, 92);
-    collorBlueish = color(25, 82, 99);
+    colorBlueish = color(25, 82, 99);
     gradient = map(level, 0, 0.15, 0, 1);
-    colorTo1 = lerpColor(collorBlueish, colorYellowish, gradient);
+    colorTo1 = lerpColor(colorBlueish, colorYellowish, gradient);
 
   }
 
@@ -76,7 +77,7 @@ function draw() {
     strokeWeight(0.1);
     stroke(20);
     fill(247, 245, 237, 130);
-    ellipse(0, 17, 5);
+    ellipse(0, 12, 5);
 
   }
 
@@ -92,7 +93,7 @@ var gap = 50;
 
 var offset = (columnWidth+gap)*sounds.length/2*(-1);
 
-translate(windowWidth/2, windowHeight - 180);
+translate(windowWidth/2, windowHeight - 100);
 
 
 for (var i = 0; i < sounds.length; i++) {
@@ -101,8 +102,10 @@ for (var i = 0; i < sounds.length; i++) {
     fill(200);
 
     rect(offset+(columnWidth+gap)*i, 0, columnWidth, columnHeight);
-
-    text(desription[i], offset+(columnWidth+gap)*i, 0);
+    textFont("Helvetica");
+    textSize(20);
+    textAlign(CENTER);
+    text(description[i], offset+(columnWidth+gap)*i+columnWidth/2, -2);
 }
 
 
@@ -124,16 +127,28 @@ for (var i = 0; i < sounds.length; i++) {
       // pop();                                    // POP()! THE STYLE
 
 
-    //   if (firstRun){
-    //     push();
-    //     fill(255);
-    //     translate(width/2, height/2);
-    //     textAlign(CENTER);
-    //     textSize(120);
-    //     text('Use the buttons "ASDF" and "JKL;" to play music!', 0, 0);
-    //     pop();
-    //     // firstRun = false;
-    // console.log('asdf');
-    //   }
+      if (firstRun){
+        push();
+        fill(0);
+        noStroke();
+        textAlign(CENTER);
+        textSize(50);
+        textFont('Helvetica');
+        text('Use the buttons ASDF and JKL; to play music!', 0, - windowHeight/2);
+
+
+
+        pop();
+
+      }
+      if (keyIsPressed === true) {
+        firstRun = false;
+
+      }
+
+
+      var freq = map(mouseX, 0, width, 20, 10000);
+      filterr.freq(freq);
+      filterr.res(50);
 
 }

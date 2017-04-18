@@ -11,9 +11,4 @@ Rectangle.prototype.display = function () {
 
 Rectangle.prototype.update = function () {
   rotate(radians(2*frameCount/mouseX));
-  // if (this.side < windowWidth) {
-  //   this.side++;
-  // } else {
-  //   this.side = 20;
-  // }
 };
