@@ -10,5 +10,5 @@ Rectangle.prototype.display = function () {
 };
 
 Rectangle.prototype.update = function () {
-  rotate(radians(2*frameCount/mouseX));
+  rotate(radians(frameCount/sqrt(mouseX))/2);
 };

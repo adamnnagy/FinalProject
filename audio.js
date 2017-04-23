@@ -1,11 +1,13 @@
 function myAudio(key, volume, audioFile, reverbKey) {
   this.key = key;
   this.audioFile = audioFile;
+  this.volume = volume;
   this.audioFile.setVolume(volume);
   this.counter = 0;
   this.reverbKey = reverbKey;
 
 }
+
 
 var amplitude = new p5.Amplitude();
 
@@ -20,10 +22,10 @@ var amplitude = new p5.Amplitude();
 var sounds = [];
 
 var description = [
-  'guitar1',
-  'guitar2',
-  'guitar3',
-  'guitar4',
+  'guitar 1',
+  'guitar 2',
+  'guitar 3',
+  'guitar 4',
   'birds',
   'thunder',
   'rain',
@@ -43,12 +45,12 @@ var keys = [
 
 var reverbKeys = [
   81, 87, 69, 82,
-  1, 2, 3, 4
+  85, 73, 79, 80
 ];
 
 var volumes = [
   0.1, 0.1, 0.1, 0.1,
-  0.01, 0.01, 0.001, 0.001,
+  0.01, 0.01, 0, 0,
 ];
 
 function preload() {

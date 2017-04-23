@@ -9,8 +9,14 @@ function keyPressed() {
   //playback
   for (var i = 0; i < soundsClass.length; i++) {
     if(keyCode === soundsClass[i].key) {
+
       if (!soundsClass[i].audioFile.isPlaying()) {
-        soundsClass[i].audioFile.play();
+        soundsClass[i].audioFile.setVolume(soundsClass[i].volume);
+        console.log(soundsClass[i].volume);
+        soundsClass[i].audioFile.loop();
+      } else {
+
+        soundsClass[i].audioFile.stop();
       }
     }
   }
@@ -30,13 +36,13 @@ function keyPressed() {
     }
   }
 
-  if (keyCode === 66){
-    for (var i = 0; i < soundsClass.length-4; i++) {
-      soundsClass[i].audioFile.reverseBuffer();
-      soundsClass[i].audioFile.stop();
-
-      console.log('pressed');
-    }
-  }
+  // if (keyCode === 66){
+  //   for (var i = 0; i < soundsClass.length; i++) {
+  //     soundsClass[i].audioFile.reverseBuffer();
+  //     // soundsClass[i].audioFile.stop();
+  //
+  //     console.log('pressed');
+  //   }
+  // }
 
 }

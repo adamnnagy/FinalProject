@@ -47,16 +47,17 @@ function draw() {
   var level = amplitude.getLevel();
 
 
-  if (false) {
-    colorTo1 = color(232, 215, 92);
+   color(232, 215, 92);
 
-  } else {
+
     colorYellowish = color(232, 215, 92);
     colorBlueish = color(25, 82, 99);
     gradient = map(level, 0, 0.15, 0, 1);
     colorTo1 = lerpColor(colorBlueish, colorYellowish, gradient);
+    gradient = map(mouseX, 0, width, 0, 1);
+    colorFrom1 =lerpColor(color(36, 27, 45), color(74, 132, 226), gradient);
+    // colorFrom1 =lerpColor(color(36, 27, 45), color(0, 97, 255), gradient);
 
-  }
 
 
   for (var i = rectangles.length - 1; i > 0; i--) {
@@ -129,7 +130,10 @@ for (var i = 0; i < sounds.length; i++) {
 
       if (firstRun){
         push();
-        fill(0);
+        fill(250, 40);
+        rectMode(CENTER);
+        rect(windowWidth/2, 200, 0, windowHeight/2);
+        fill(255);
         noStroke();
         textAlign(CENTER);
         textSize(50);
@@ -150,5 +154,19 @@ for (var i = 0; i < sounds.length; i++) {
       var freq = map(mouseX, 0, width, 20, 10000);
       filterr.freq(freq);
       filterr.res(50);
+
+      for (var i = 0; i < soundsClass.length; i++) {
+      if (i < 4) {
+        var panning = map(mouseX, 0., width, -1, 1);
+
+        soundsClass[i].audioFile.pan(panning);
+      } else {
+        var panning = map(mouseX, 0., width, 1, -1);
+
+        soundsClass[i].audioFile.pan(panning);
+
+      }
+    }
+
 
 }
