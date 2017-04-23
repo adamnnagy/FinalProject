@@ -139,6 +139,7 @@ for (var i = 0; i < sounds.length; i++) {
         textSize(50);
         textFont('Helvetica');
         text('Use the buttons ASDF and JKL; to play music!', 0, - windowHeight/2);
+        text('Press QWER and UIOP to use the reverb!', 0, - windowHeight/2 + 200);
 
 
 
