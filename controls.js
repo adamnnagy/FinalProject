@@ -7,12 +7,12 @@ function mouseClicked() {
 function keyPressed() {
 
   //playback
+  // NOTE: playback
+
   for (var i = 0; i < soundsClass.length; i++) {
     if(keyCode === soundsClass[i].key) {
-
       if (!soundsClass[i].audioFile.isPlaying()) {
         soundsClass[i].audioFile.setVolume(soundsClass[i].volume);
-        console.log(soundsClass[i].volume);
         soundsClass[i].audioFile.loop();
       } else {
 
@@ -36,13 +36,5 @@ function keyPressed() {
     }
   }
 
-  // if (keyCode === 66){
-  //   for (var i = 0; i < soundsClass.length; i++) {
-  //     soundsClass[i].audioFile.reverseBuffer();
-  //     // soundsClass[i].audioFile.stop();
-  //
-  //     console.log('pressed');
-  //   }
-  // }
 
 }

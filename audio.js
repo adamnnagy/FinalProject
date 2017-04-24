@@ -11,14 +11,6 @@ function myAudio(key, volume, audioFile, reverbKey) {
 
 var amplitude = new p5.Amplitude();
 
-// Audio.prototype.playback = function () {
-//
-// };
-//
-// Audio.prototype.playReverb = function () {
-//
-// };
-
 var sounds = [];
 
 var description = [
@@ -50,7 +42,7 @@ var reverbKeys = [
 
 var volumes = [
   0.1, 0.1, 0.1, 0.1,
-  0.01, 0.01, 0, 0,
+  0.01, 0.01, 0.001, 0.001,
 ];
 
 function preload() {
@@ -88,9 +80,6 @@ for (var i = 0; i < sounds.length; i++) {
 
 
 }
-
-//how could i use the audios more easily?
-
 
 
 var soundsClass = [];
