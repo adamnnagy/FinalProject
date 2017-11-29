@@ -7,9 +7,9 @@ body {
 }
 
 iframe {
+  overflow: hidden;
   margin: auto;
   border: none;
-  
 }
 
 .loadingclass {

@@ -1,10 +1,18 @@
+//rectangle properties
 var rectangles = [];
 var defaultHeight = 75;
-var numberOfRectangles = 30;
+var numberOfRectangles = 12;
 var start;
-var interval = 20;
+//don't know what this is yet
+var interval = 5;
+//should be kept between 1..1.5
+var spaceBetweenTriangles = 2.5;
+//for the text to disappear
 var firstRun = true;
 var fft, filterr;
+
+var width = 480;
+var height = 360;
 
 function setup(){
 
@@ -22,7 +30,7 @@ function setup(){
 
 
   for (var i = 0; i < numberOfRectangles; i++) {
-    rectangles[i] = new Rectangle(defaultHeight*i);
+    rectangles[i] = new Rectangle(defaultHeight*spaceBetweenTriangles*i);
   }
 
   console.log('version 1.1');
