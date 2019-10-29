@@ -6,7 +6,7 @@ var interval = 20;
 var firstRun = true;
 var fft, filterr;
 
-function setup(){
+function setup() {
 
   colorMode(RGB);
 
@@ -22,7 +22,7 @@ function setup(){
 
 
   for (var i = 0; i < numberOfRectangles; i++) {
-    rectangles[i] = new Rectangle(defaultHeight*i);
+    rectangles[i] = new Rectangle(defaultHeight * i);
   }
 
   console.log('version 1.1');
@@ -40,7 +40,7 @@ function draw() {
   background(250);
 
   push();
-  translate(width/2, height/2);
+  translate(width / 2, height / 2);
 
 
 
@@ -55,7 +55,7 @@ function draw() {
   gradient = map(level, 0, 0.15, 0, 1);
   colorTo1 = lerpColor(colorBlueish, colorYellowish, gradient);
   gradient = map(mouseX, 0, width, 0, 1);
-  colorFrom1 =lerpColor(color(36, 27, 45), color(74, 132, 226), gradient);
+  colorFrom1 = lerpColor(color(36, 27, 45), color(74, 132, 226), gradient);
 
 
 
@@ -73,7 +73,7 @@ function draw() {
 
   for (var i = 0; i < 8; i++) {
 
-    rotate(TWO_PI*i/8);
+    rotate(TWO_PI * i / 8);
     strokeWeight(0.1);
     stroke(20);
     fill(247, 245, 237, 130);
@@ -91,9 +91,9 @@ function draw() {
   var gap = 70;
 
 
-  var offset = (columnWidth+gap)*sounds.length/2*(-1);
+  var offset = (columnWidth + gap) * sounds.length / 2 * (-1);
 
-  translate(windowWidth/2, windowHeight - 100);
+  translate(windowWidth / 2, windowHeight - 100);
 
 
   for (var i = 0; i < sounds.length; i++) {
@@ -101,11 +101,11 @@ function draw() {
     stroke(100);
     fill(200);
 
-    rect(offset+(columnWidth+gap)*i, 0, columnWidth, columnHeight);
+    rect(offset + (columnWidth + gap) * i, 0, columnWidth, columnHeight);
     textFont("Helvetica");
     textSize(20);
     textAlign(CENTER);
-    text(description[i], offset+(columnWidth+gap)*i+columnWidth/2, -2);
+    text(description[i], offset + (columnWidth + gap) * i + columnWidth / 2, -2);
   }
 
 
@@ -119,21 +119,21 @@ function draw() {
 
       sampleTime = map(sounds[i].currentTime(), 0, sounds[i].duration(), 0, columnHeight);
 
-      rect(offset+i*(columnWidth+gap), 0, columnWidth, sampleTime);
+      rect(offset + i * (columnWidth + gap), 0, columnWidth, sampleTime);
 
     }
 
   }
 
 
-if (firstRun) {
+  if (firstRun) {
 
-  myIntroText.display();
-} else {
-  myIntroText.display();
-  myIntroText.fade();
+    myIntroText.display();
+  } else {
+    myIntroText.display();
+    myIntroText.fade();
 
-}
+  }
 
   if (keyIsPressed === true) {
     firstRun = false;
