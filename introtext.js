@@ -1,6 +1,6 @@
 function introText() {
-  this.line1 = 'Use the buttons ASDF and JKL; to play music!';
-  this.line2 = 'Press QWER and UIOP to use the reverb!';
+  this.line1 = 'ASDF and JKL; for music';
+  this.line2 = 'QWER and UIOP for effects';
   this.alpha = 255;
 }
 
