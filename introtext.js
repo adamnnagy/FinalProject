@@ -9,8 +9,8 @@ introText.prototype.display = function () {
   fill(255, this.alpha);
   noStroke();
   textAlign(CENTER);
-  textSize(50);
-  textFont('Helvetica');
+  textSize(30);
+  textFont('Courier');
   text(this.line1, 0,  -windowHeight/2);
   text(this.line2, 0, - windowHeight/2 + 200);
   pop();
